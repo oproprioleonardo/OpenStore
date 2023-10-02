@@ -32,7 +32,7 @@ namespace OpenStore.Infra.Sale
 
         public Cupom ToDomain()
         {
-            return Cupom.NewCupom(Id, Date, Cliente, Items.ConvertAll(i => i.ToDomain()));
+            return new Cupom(Id, Date, Cliente, Items.ConvertAll(i => i.ToDomain()), IsClosed, IsCanceled);
         }
 
     }

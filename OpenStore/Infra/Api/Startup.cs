@@ -1,8 +1,10 @@
-﻿using OpenStore.Application.Produto.Create;
+﻿using Microsoft.OpenApi.Models;
+using OpenStore.Application.Produto.Create;
 using OpenStore.Application.Produto.Delete;
 using OpenStore.Application.Produto.Get;
 using OpenStore.Application.Produto.List;
 using OpenStore.Application.Produto.Update;
+using OpenStore.Application.Venda.Create;
 using OpenStore.Domain.Contexts.Produto;
 using OpenStore.Domain.Contexts.Venda;
 using OpenStore.Infra.Api.Filters;
@@ -27,7 +29,17 @@ namespace OpenStore.Infra.Api
             {
                 options.Filters.Add<DefaultExceptionFilter>();
             });
-
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "OpenStore API",
+                    Description = "An ASP.NET Core Web API for managing point of sale"
+                });
+            });
+    
 
             services.AddSingleton(provider => new CupomRepository(@"C:\TEMP\cupom-list.json"));
             services.AddSingleton<CupomJsonFileGateway>();
@@ -44,15 +56,25 @@ namespace OpenStore.Infra.Api
             services.AddSingleton<ListProductsUseCase, DefaultListProductsUseCase>();
             services.AddSingleton<UpdateProductUseCase, DefaultUpdateProductUseCase>();
 
+            services.AddSingleton<CreateCupomUseCase, DefaultCreateCupomUseCase>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
             app.UseRouting();
+            app.UseStaticFiles();
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "OpenStore");
+                options.RoutePrefix = "swagger";
+            });
 
+                        
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllers();
             });
         }

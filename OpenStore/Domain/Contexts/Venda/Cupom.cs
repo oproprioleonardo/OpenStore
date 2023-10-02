@@ -24,17 +24,19 @@ namespace OpenStore.Domain.Contexts.Venda
             Items = new List<CupomItem>();
         }
 
-        public Cupom(long id, DateTime date, string cliente, List<CupomItem> items)
+        public Cupom(long id, DateTime date, string cliente, List<CupomItem> items, bool isClosed, bool isCanceled)
         {
             Id = id;
             Date = date;
             Cliente = cliente;
             Items = items;
+            IsClosed = isClosed;
+            IsCanceled = isCanceled;
         }
 
-        public static Cupom NewCupom(long id, DateTime date, string cliente, List<CupomItem> items)
+        public static Cupom NewCupom(DateTime date, string cliente, List<CupomItem> items)
         {
-            return new Cupom(id, date, cliente, items);
+            return new Cupom(0, date, cliente, items, true, false);
         }
 
         public void Close()
