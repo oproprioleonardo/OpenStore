@@ -26,7 +26,7 @@ namespace OpenStore.Infra.Produto.Persistence
 
             produtos.RemoveAll(p => p.Id == produto.Id);
             produtos.Add(produto);
-            TextWriter writer = new StreamWriter(filePath);
+            using TextWriter writer = new StreamWriter(filePath);
             writer.Write(JsonConvert.SerializeObject(produtos));
             writer.Close();
             return produto;
@@ -72,13 +72,13 @@ namespace OpenStore.Infra.Produto.Persistence
             List<ProductEntity> produtos = new List<ProductEntity>();
             if (File.Exists(filePath))
             {
-                TextReader reader = new StreamReader(filePath);
+                using TextReader reader = new StreamReader(filePath);
                 produtos = JsonConvert.DeserializeObject<List<ProductEntity>>(reader.ReadToEnd()) ?? new List<ProductEntity>();
                 reader.Close();
             }
             else
             {
-                File.Create(filePath);
+                using (File.Create(filePath)) { }
             }
 
             _isCached = true;
@@ -92,7 +92,7 @@ namespace OpenStore.Infra.Produto.Persistence
 
             produtos.RemoveAll(p => p.Id == id);
 
-            TextWriter writer = new StreamWriter(filePath);
+            using TextWriter writer = new StreamWriter(filePath);
             writer.Write(JsonConvert.SerializeObject(produtos));
             writer.Close();
         }

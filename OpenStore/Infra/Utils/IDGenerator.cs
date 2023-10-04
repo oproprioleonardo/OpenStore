@@ -26,9 +26,9 @@ namespace OpenStore.Infra.Utils
         private static void Save()
         {
             if (!File.Exists(_filePath))
-                File.Create(_filePath);
+                using (File.Create(_filePath)) { }
             List<TableId> l = FindAll();
-            TextWriter writer = new StreamWriter(_filePath);
+            using TextWriter writer = new StreamWriter(_filePath);
             writer.Write(JsonConvert.SerializeObject(l));
             writer.Close();
         }
@@ -38,8 +38,9 @@ namespace OpenStore.Infra.Utils
             if (!_isCached)
             {
                 if (!File.Exists(_filePath))
-                    File.Create(_filePath);
-                TextReader reader = new StreamReader(_filePath);
+                    using (File.Create(_filePath)) { }
+
+                using TextReader reader = new StreamReader(_filePath);
                 string json = reader.ReadToEnd() ?? "[]";
                 reader.Close();
                 _cached = JsonConvert.DeserializeObject<List<TableId>>(json) ?? new List<TableId>();

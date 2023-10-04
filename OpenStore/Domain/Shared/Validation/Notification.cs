@@ -40,14 +40,9 @@ namespace OpenStore.Domain.Shared.Validation
             return this;
         }
 
-        public class Error
-        {
-            public string Message;
-
-            public Error(string message)
-            {
-                Message = message;
-            }
-        }
+        
     }
+
+    public record Error(string Message);
+  
 }
