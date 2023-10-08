@@ -1,9 +1,4 @@
 ﻿using OpenStore.Domain.Shared.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenStore.Domain.Contexts.Venda
 {
@@ -18,14 +13,8 @@ namespace OpenStore.Domain.Contexts.Venda
 
         public void Validate(Notification notification)
         {
-            ValidateDate(notification);
             ValidateCliente(notification);
             ValidateItems(notification);
-        }
-
-        public void ValidateDate(Notification notification)
-        {
-            if (Venda.Date == null) notification.Append("Data não pode ser nula");
         }
 
         public void ValidateCliente(Notification notification)
@@ -37,7 +26,7 @@ namespace OpenStore.Domain.Contexts.Venda
         public void ValidateItems(Notification notification)
         {
             if (Venda.Items == null) notification.Append("Items não pode ser nulo");
-            if (Venda.Items.Count == 0) notification.Append("Items não pode ser vazio");
+            if (Venda.Items != null && Venda.Items.Count == 0) notification.Append("Items não pode ser vazio");
         }
 
 

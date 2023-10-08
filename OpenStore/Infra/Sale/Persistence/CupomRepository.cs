@@ -33,7 +33,7 @@ namespace OpenStore.Infra.Sale
 
             cupons.RemoveAll(c => c.Id == cupom.Id);
             cupons.Add(cupom);
-            TextWriter writer = new StreamWriter(filePath);
+            using TextWriter writer = new StreamWriter(filePath);
             writer.Write(JsonConvert.SerializeObject(cupons));
             writer.Close();
             return cupom;
@@ -50,7 +50,11 @@ namespace OpenStore.Infra.Sale
         {
             if (!_isCached)
             {
-                TextReader reader = new StreamReader(filePath);
+                if (!File.Exists(filePath))
+                {
+                    using (File.Create(filePath)) { };
+                }
+                using TextReader reader = new StreamReader(filePath);
                 string json = reader.ReadToEnd();
                 reader.Close();
                 _cached = JsonConvert.DeserializeObject<List<CupomEntity>>(json) ?? new List<CupomEntity>();
@@ -64,7 +68,7 @@ namespace OpenStore.Infra.Sale
             List<CupomEntity> cupons = FindAll();
 
             cupons.RemoveAll(c => c.Id == id);
-            TextWriter writer = new StreamWriter(filePath);
+            using TextWriter writer = new StreamWriter(filePath);
             writer.Write(JsonConvert.SerializeObject(cupons));
             writer.Close();
         }
