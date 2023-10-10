@@ -4,7 +4,7 @@
         string Code,
         string InternCode,
         string Description,
-        char Unit,
+        string Unit,
         double Stock,
         decimal CostPrice,
         decimal RetailPrice,

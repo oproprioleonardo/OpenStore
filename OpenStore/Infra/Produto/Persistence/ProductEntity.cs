@@ -24,9 +24,10 @@ namespace OpenStore.Infra.Produto.Persistence
             Unit = ProductUnit.INDETERMINADO.ToString();
         }
 
-        public ProductEntity(string code, string internCode, string description, string unit, double stock,
+        public ProductEntity(long Id, string code, string internCode, string description, string unit, double stock,
                        decimal costPrice, decimal retailPrice, decimal wholesalePrice, double wholesaleQuantity, bool isActive)
         {
+            this.Id = Id;
             Code = code;
             InternCode = internCode;
             Description = description;
@@ -42,6 +43,7 @@ namespace OpenStore.Infra.Produto.Persistence
         public static ProductEntity From(Product produto)
         {
             return new ProductEntity(
+                produto.Id,
                 produto.Code,
                 produto.InternCode,
                 produto.Description,

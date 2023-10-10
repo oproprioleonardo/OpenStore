@@ -21,6 +21,11 @@
 
             return ProductUnit.INDETERMINADO;
         }
+
+        public static ProductUnit Parse(string value)
+        {
+            return Parse(value[0]);
+        }
     }
 
 }

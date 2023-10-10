@@ -12,7 +12,7 @@ namespace OpenStore.Application.Produto.Create
         string Code,
         string InternCode,
         string Description,
-        char Unit,
+        string Unit,
         double Stock,
         decimal CostPrice,
         decimal RetailPrice,
@@ -21,7 +21,7 @@ namespace OpenStore.Application.Produto.Create
         )
     {
 
-        public static CreateProductCommand With(string code, string internCode, string description, char unit, double stock,
+        public static CreateProductCommand With(string code, string internCode, string description, string unit, double stock,
                        decimal costPrice, decimal retailPrice, decimal wholesalePrice, double wholesaleQuantity)
         {
             return new CreateProductCommand(code, internCode, description, unit, stock, costPrice, retailPrice, wholesalePrice, wholesaleQuantity);
