@@ -9,7 +9,11 @@ namespace OpenStore.Application.Produto.List
         string Description,
         string Unit,
         decimal RetailPrice,
-        double Stock
+        double Stock,
+        decimal CostPrice,
+        decimal WholesalePrice,
+        double WholesaleQuantity,
+        bool IsActive
         )
     {
 
@@ -22,7 +26,12 @@ namespace OpenStore.Application.Produto.List
                 product.Description,
                 product.ProductUnit.ToString(),
                 product.RetailPrice,
-                product.Stock);
+                product.Stock,
+                product.CostPrice,
+                product.WholesalePrice,
+                product.WholesaleQuantity,
+                product.IsActive
+                );
         }
     }
 }

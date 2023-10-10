@@ -15,6 +15,7 @@ namespace OpenStore.Infra.Api.Filters
                 var notificationException = (NotificationException)exception;
                 var response = new
                 {
+                    exception = notificationException.GetType().Name,
                     message = notificationException.Message,
                     errors = notificationException.Errors
                 };
@@ -26,6 +27,7 @@ namespace OpenStore.Infra.Api.Filters
             
             var defaultErrorResponse = new
             {
+                exception = exception.GetType().Name,
                 message = "Ocorreu um erro durante a solicitação.",
                 error = exception.Message,
                 stackTrace = exception.StackTrace

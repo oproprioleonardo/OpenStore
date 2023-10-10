@@ -1,19 +1,33 @@
-﻿using OpenStore.Domain.Contexts.Produto;
+﻿using Newtonsoft.Json;
+using OpenStore.Domain.Contexts.Produto;
 
 namespace OpenStore.Infra.Produto.Persistence
 {
+
+    [JsonObject]
     public class ProductEntity
     {
+        [JsonProperty("id")]
         public long Id { get; set; }
+        [JsonProperty("code")]
         public string Code { get; set; }
+        [JsonProperty("internCode")]
         public string InternCode { get; set; }
+        [JsonProperty("description")]
         public string Description { get; set; }
+        [JsonProperty("unit")]
         public string Unit { get; set; }
+        [JsonProperty("stock")]
         public double Stock { get; set; }
+        [JsonProperty("costPrice")]
         public decimal CostPrice { get; set; }
+        [JsonProperty("retailPrice")]
         public decimal RetailPrice { get; set; }
+        [JsonProperty("wholesalePrice")]
         public decimal WholesalePrice { get; set; }
+        [JsonProperty("wholesaleQuantity")]
         public double WholesaleQuantity { get; set; }
+        [JsonProperty("isActive")]
         public bool IsActive { get; set; }
 
         public ProductEntity()
