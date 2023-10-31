@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Hosting;
 using OpenStore.Infra.Api;
 
 Host.CreateDefaultBuilder(args)

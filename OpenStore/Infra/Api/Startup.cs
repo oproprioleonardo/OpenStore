@@ -63,6 +63,7 @@ namespace OpenStore.Infra.Api
         {
 
             app.UseRouting();
+            app.UseHttpLogging();
             app.UseStaticFiles();
             app.UseSwagger();
             app.UseSwaggerUI(options =>
