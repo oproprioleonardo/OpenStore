@@ -36,7 +36,7 @@ namespace OpenStore.Infra.Produto.Persistence
         {
             List<ProductEntity> produtos = FindAll();
 
-            return produtos.Find(p => p.Code.Contains(term) || p.InternCode.Contains(term) || p.Description.Contains(term));
+            return produtos.Find(p => p.Code.Contains(term) || p.InternCode.Contains(term) || p.Description.ToLower().Contains(term.ToLower()));
         }
 
         public ProductEntity? FindByCode(string code)

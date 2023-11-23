@@ -47,7 +47,7 @@ namespace OpenStore.Infra.Api.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] CreateProductRequest request)
         {
-            CreateProductCommand input = new CreateProductCommand(
+            CreateProductInput input = new CreateProductInput(
                 request.Code,
                 request.InternCode,
                 request.Description,
@@ -79,7 +79,7 @@ namespace OpenStore.Infra.Api.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] UpdateProductRequest request)
         {
-            UpdateProductCommand input = new UpdateProductCommand(
+            UpdateProductInput input = new UpdateProductInput(
                 id,
                 request.InternCode,
                 request.Description,

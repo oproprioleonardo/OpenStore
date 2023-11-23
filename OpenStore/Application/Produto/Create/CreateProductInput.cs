@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace OpenStore.Application.Produto.Create
 {
 
-    public record CreateProductCommand(
+    public record CreateProductInput(
         string Code,
         string InternCode,
         string Description,
@@ -21,10 +21,10 @@ namespace OpenStore.Application.Produto.Create
         )
     {
 
-        public static CreateProductCommand With(string code, string internCode, string description, string unit, double stock,
+        public static CreateProductInput With(string code, string internCode, string description, string unit, double stock,
                        decimal costPrice, decimal retailPrice, decimal wholesalePrice, double wholesaleQuantity)
         {
-            return new CreateProductCommand(code, internCode, description, unit, stock, costPrice, retailPrice, wholesalePrice, wholesaleQuantity);
+            return new CreateProductInput(code, internCode, description, unit, stock, costPrice, retailPrice, wholesalePrice, wholesaleQuantity);
         }
     }
    

@@ -2,7 +2,7 @@
 
 namespace OpenStore.Application.Produto.Update
 {
-    public abstract class UpdateProductUseCase : UseCase<UpdateProductCommand, ProductOutput>
+    public abstract class UpdateProductUseCase : UseCase<UpdateProductInput, ProductOutput>
     {
     }
 }

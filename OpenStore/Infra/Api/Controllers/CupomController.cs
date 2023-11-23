@@ -20,10 +20,10 @@ namespace OpenStore.Infra.Api.Controllers
         [HttpPost]
         public IActionResult CreateCupom([FromBody] CreateCupomRequest request)
         {
-            CreateCupomCommand command = new CreateCupomCommand(
+            CreateCupomInput command = new CreateCupomInput(
                 request.Date,
                 request.Cliente,
-                request.Items.ConvertAll(i => new CreateCupomItemCommand(i.Code, i.Description, i.Price, i.Quantity))
+                request.Items.ConvertAll(i => new CreateCupomItemInput(i.Code, i.Description, i.Price, i.Quantity))
                 );
 
             var output = createCupomUseCase.Execute(command);

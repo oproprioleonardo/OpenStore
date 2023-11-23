@@ -14,7 +14,7 @@ namespace OpenStore.Application.Venda.Create
             this.cupomGateway = cupomGateway;
         }
 
-        public override CreateCupomOutput Execute(CreateCupomCommand command)
+        public override CreateCupomOutput Execute(CreateCupomInput command)
         {
             Cupom cupom = Cupom.NewCupom(command.Date, command.Cliente, new List<CupomItem>());
             cupomGateway.Create(cupom);

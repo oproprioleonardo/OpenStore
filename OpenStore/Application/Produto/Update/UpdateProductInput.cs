@@ -1,6 +1,6 @@
 ﻿namespace OpenStore.Application.Produto.Update
 {
-    public record UpdateProductCommand(
+    public record UpdateProductInput(
         long Id,
         string InternCode,
         string Description,
@@ -13,10 +13,10 @@
         )
     {
 
-        public static UpdateProductCommand With(long id, string internCode, string description, string unit, double stock,
+        public static UpdateProductInput With(long id, string internCode, string description, string unit, double stock,
                        decimal costPrice, decimal retailPrice, decimal wholesalePrice, double wholesaleQuantity)
         {
-            return new UpdateProductCommand(id, internCode, description, unit, stock, costPrice, retailPrice, wholesalePrice, wholesaleQuantity);
+            return new UpdateProductInput(id, internCode, description, unit, stock, costPrice, retailPrice, wholesalePrice, wholesaleQuantity);
         }
     }
 }

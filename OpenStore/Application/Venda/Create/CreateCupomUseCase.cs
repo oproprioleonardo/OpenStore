@@ -1,6 +1,6 @@
 ﻿namespace OpenStore.Application.Venda.Create
 {
-    public abstract class CreateCupomUseCase : UseCase<CreateCupomCommand, CreateCupomOutput>
+    public abstract class CreateCupomUseCase : UseCase<CreateCupomInput, CreateCupomOutput>
     {
     }
 }

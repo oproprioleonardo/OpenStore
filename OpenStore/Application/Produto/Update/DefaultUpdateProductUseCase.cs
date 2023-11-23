@@ -15,7 +15,7 @@ namespace OpenStore.Application.Produto.Update
             this.productGateway = productGateway;
         }
 
-        public override ProductOutput Execute(UpdateProductCommand command)
+        public override ProductOutput Execute(UpdateProductInput command)
         {
             Product? p = productGateway.FindById(command.Id) ?? throw new NotFoundException(typeof(Product), command.Id.ToString());
             p.UpdateProduct(

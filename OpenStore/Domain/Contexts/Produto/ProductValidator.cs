@@ -38,7 +38,7 @@ namespace OpenStore.Domain.Contexts.Produto
 
         private void ValidateStock(Notification notification)
         {
-            if (_produto.Stock <= 0)
+            if (_produto.Stock < 0)
                 notification.Append("Quantidade de estoque do produto deve ser maior que zero");
         }
 

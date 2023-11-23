@@ -14,7 +14,7 @@ namespace OpenStore.Application.Produto.Create
             this.productGateway = productGateway;
         }
 
-        public override CreateProductOutput Execute(CreateProductCommand command)
+        public override CreateProductOutput Execute(CreateProductInput command)
         {
             Product p = Product.NewProduct(
                 command.Code,
